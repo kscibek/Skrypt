@@ -5,10 +5,10 @@ $DIALOG --title "Segregator" --clear \
    --yesno "\n \n Czy chcesz dokonac segregacji plikow wg daty utworzenia w tym katalogu?" 9 40
 case $? in
 0)
-$DIALOG --menu "Jak chcesz posegregowac pliki?" 12 40 3 1 "dziennie" 2 "wg miesiecy"
+$DIALOG --menu "Jak chcesz posegregowac pliki?" 12 40 2 1 "dziennie" 2 "wg miesiecy"
 
 case $? in 
-0)
+1)
 $DIALOG --title "Segregacja dzienna" --clear \
    --yesno "\n \n       Skompresowac pliki?" 8 40
 case $? in
@@ -21,7 +21,7 @@ cat .zzz.txt
  for i in `seq 2 $MAX`
 do
    LINE=$i"p"
-        mv `cat <.zzz.txt| sed -n $LINE| cut -b 38-`  --target-directory=`cat <.zzz.txt |sed -n $LINE| cut -b 25-30 | tr ' '$
+        mv `cat <.zzz.txt| sed -n $LINE| cut -b 38-`  --target-directory=`cat <.zzz.txt |sed -n $LINE| cut -b 25-30 | tr ' ' '-'`
 done
 rm -rf .zzz.txt
 
@@ -37,7 +37,7 @@ cat .zzz.txt
  for i in `seq 2 $MAX`
 do
    LINE=$i"p"
-        mv `cat <.zzz.txt| sed -n $LINE| cut -b 38-`  --target-directory=`cat <.zzz.txt |sed -n $LINE| cut -b 25-30 | tr ' '$
+        mv `cat <.zzz.txt| sed -n $LINE| cut -b 38-`  --target-directory=`cat <.zzz.txt |sed -n $LINE| cut -b 25-30 | tr ' ' '-'`
 done
 rm -rf .zzz.txt ;;
 
@@ -48,7 +48,7 @@ esac
 
 ;;
 
-1)
+2)
 $DIALOG --title "Segregacja wg miesiecy" --clear \
    --yesno "\n \n       Skompresowac pliki?" 8 40
 case $? in
@@ -61,7 +61,7 @@ cat .zzz.txt
  for i in `seq 2 $MAX`
 do
    LINE=$i"p"
-        mv `cat <.zzz.txt| sed -n $LINE| cut -b 38-`  --target-directory=`cat <.zzz.txt |sed -n $LINE| cut -b 25-27 | tr ' '$
+        mv `cat <.zzz.txt| sed -n $LINE| cut -b 38-`  --target-directory=`cat <.zzz.txt |sed -n $LINE| cut -b 25-27 | tr ' ' '-'`
 done
 rm -rf .zzz.txt
 
@@ -76,7 +76,7 @@ cat .zzz.txt
  for i in `seq 2 $MAX`
 do
    LINE=$i"p"
-        mv `cat <.zzz.txt| sed -n $LINE| cut -b 38-`  --target-directory=`cat <.zzz.txt |sed -n $LINE| cut -b 25-27 | tr ' '$
+        mv `cat <.zzz.txt| sed -n $LINE| cut -b 38-`  --target-directory=`cat <.zzz.txt |sed -n $LINE| cut -b 25-27 | tr ' ' '-'`
 done
 rm -rf .zzz.txt ;;
 
